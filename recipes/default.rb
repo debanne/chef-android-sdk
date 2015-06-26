@@ -96,7 +96,9 @@ template "/etc/profile.d/#{node['android-sdk']['name']}.sh"  do
   )
 end
 
-package 'expect'
+unless platform_family?("mac_os_x")
+  package 'expect'
+end
 
 #
 # Install, Update (a.k.a. re-install) Android components
